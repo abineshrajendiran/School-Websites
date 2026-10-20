@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admission Form - GRA Group of Institutions</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f3f6;
+      color: #222222;
+    }
+
+    .form-box {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Form heading */
+    .form-header {
+      background: #6A0F0F;
+      color: #F1D18A;
+      text-align: center;
+      padding: 22px 15px;
+    }
+
+    .form-header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .form-header p {
+      margin: 6px 0 0;
+      color: #ffffff;
+      font-size: 14px;
+    }
+
+    form {
+      padding: 25px 30px 30px;
+    }
+
+    /* Section boxes */
+    fieldset {
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      margin: 0 0 22px;
+      padding: 15px 18px 18px;
+    }
+
+    legend {
+      padding: 0 10px;
+      font-weight: bold;
+      color: #6A0F0F;
+      font-size: 16px;
+    }
+
+    /* Two columns, becomes one column on mobile */
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .star {
+      color: #cc0000;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+      padding: 10px;
+      font-size: 15px;
+      border: 1px solid #bbbbbb;
+      border-radius: 6px;
+      font-family: Arial, sans-serif;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #F1D18A;
+      border-color: #6A0F0F;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    /* Gender radio buttons */
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      padding-top: 6px;
+    }
+
+    .radio-group label {
+      font-weight: normal;
+      margin: 0;
+    }
+
+    /* Declaration */
+    .declaration {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .declaration label {
+      font-weight: normal;
+      margin: 0;
+    }
+
+    /* Buttons */
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      background: #6A0F0F;
+      color: #ffffff;
+    }
+
+    .submit-btn:hover {
+      background: #4A0808;
+    }
+
+    .reset-btn {
+      background: #e5e5e5;
+      color: #222222;
+    }
+
+    .reset-btn:hover {
+      background: #d0d0d0;
+    }
+
+    /* Success message (hidden until the form is submitted) */
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 40px 25px 45px;
+    }
+
+    .success-box.show {
+      display: block;
+    }
+
+    .tick {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: #1e8e3e;
+      color: #ffffff;
+      font-size: 46px;
+      line-height: 80px;
+    }
+
+    .success-box h2 {
+      margin: 0 0 8px;
+      color: #1e8e3e;
+    }
+
+    .status-table {
+      margin: 22px auto 25px;
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 420px;
+      text-align: left;
+    }
+
+    .status-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e3e3e3;
+      font-size: 15px;
+    }
+
+    .status-table td:first-child {
+      font-weight: bold;
+      color: #6A0F0F;
+      width: 45%;
+    }
+
+    .status-ok {
+      color: #1e8e3e;
+      font-weight: bold;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      form {
+        padding: 18px 15px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+
+    <div class="form-header">
+      <h1>Admission Form 2026-27</h1>
+      <p>GRA Group of Institutions - Inspiring Minds, Building Futures</p>
+    </div>
+
+    <form id="admissionForm">
+
+      <!-- 1. Student details -->
+      <fieldset>
+        <legend>Student Details</legend>
+
+        <div class="row">
+          <div class="field">
+            <label for="student-name">Student Name <span class="star">*</span></label>
+            <input type="text" id="student-name" name="Student Name" placeholder="Enter full name" required>
+          </div>
+
+          <div class="field">
+            <label for="dob">Date of Birth <span class="star">*</span></label>
+            <input type="date" id="dob" name="Date of Birth" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label>Gender <span class="star">*</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="Gender" value="Male" required> Male</label>
+              <label><input type="radio" name="Gender" value="Female"> Female</label>
+              <label><input type="radio" name="Gender" value="Other"> Other</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="class-applied">Class Applying For <span class="star">*</span></label>
+            <select id="class-applied" name="Class Applying For" required>
+              <option value="">-- Select Class --</option>
+              <option>LKG</option>
+              <option>UKG</option>
+              <option>Class 1</option>
+              <option>Class 2</option>
+              <option>Class 3</option>
+              <option>Class 4</option>
+              <option>Class 5</option>
+              <option>Class 6</option>
+              <option>Class 7</option>
+              <option>Class 8</option>
+              <option>Class 9</option>
+              <option>Class 10</option>
+              <option>Class 11</option>
+              <option>Class 12</option>
+              <option>Higher Education</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Shown only when "Higher Education" is selected -->
+        <div class="row" id="higherBox" style="display: none;">
+          <div class="field">
+            <label for="degree">Degree <span class="star">*</span></label>
+            <select id="degree" name="Degree">
+              <option value="">-- Select Degree --</option>
+              <option value="B.E.">B.E.</option>
+              <option value="B.Tech">B.Tech</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="specialization">Specialization <span class="star">*</span></label>
+            <select id="specialization" name="Specialization">
+              <option value="">-- Select Specialization --</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="previous-school">Previous School Name (if any)</label>
+          <input type="text" id="previous-school" name="Previous School" placeholder="Enter previous school name">
+        </div>
+      </fieldset>
+
+      <!-- 2. Parent details -->
+      <fieldset>
+        <legend>Parent / Guardian Details</legend>
+
+        <div class="row">
+          <div class="field">
+            <label for="father-name">Father's Name <span class="star">*</span></label>
+            <input type="text" id="father-name" name="Father Name" required>
+          </div>
+
+          <div class="field">
+            <label for="mother-name">Mother's Name <span class="star">*</span></label>
+            <input type="text" id="mother-name" name="Mother Name" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="phone">Mobile Number <span class="star">*</span></label>
+            <input type="tel" id="phone" name="Mobile Number" placeholder="10-digit mobile number"
+                   pattern="[0-9]{10}" maxlength="10" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="Email" placeholder="example@gmail.com">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 3. Address -->
+      <fieldset>
+        <legend>Address</legend>
+
+        <div class="field">
+          <label for="address">Full Address <span class="star">*</span></label>
+          <textarea id="address" name="Address" rows="3" placeholder="Door no, street, area" required></textarea>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="city">City / Town <span class="star">*</span></label>
+            <input type="text" id="city" name="City" required>
+          </div>
+
+          <div class="field">
+            <label for="pincode">Pincode <span class="star">*</span></label>
+            <input type="text" id="pincode" name="Pincode" pattern="[0-9]{6}" maxlength="6" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Declaration -->
+      <div class="declaration">
+        <input type="checkbox" id="agree" name="Declaration" value="Agreed" required>
+        <label for="agree">I declare that all the details given above are true and correct.</label>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" class="submit-btn">Submit Application</button>
+        <button type="reset" class="reset-btn">Clear</button>
+      </div>
+
+    </form>
+
+    <!-- Success message: shown after the form is submitted -->
+    <div class="success-box" id="successBox">
+      <div class="tick">&#10003;</div>
+      <h2>Application Submitted Successfully!</h2>
+      <p>Thank you. Your application has been received.</p>
+
+      <table class="status-table">
+        <tr>
+          <td>Application No.</td>
+          <td id="appNumber"></td>
+        </tr>
+        <tr>
+          <td>Student Name</td>
+          <td id="showName"></td>
+        </tr>
+        <tr>
+          <td>Class Applied</td>
+          <td id="showClass"></td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td class="status-ok">Completed</td>
+        </tr>
+      </table>
+
+      <button type="button" class="submit-btn" id="newApplication">Submit Another Application</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Get the elements we need
+    var form = document.getElementById("admissionForm");
+    var successBox = document.getElementById("successBox");
+
+    var classSelect = document.getElementById("class-applied");
+    var higherBox = document.getElementById("higherBox");
+    var degreeSelect = document.getElementById("degree");
+    var specSelect = document.getElementById("specialization");
+
+    // Specializations for each degree (change these names as you like)
+    var specializations = {
+      "B.E.": ["CSE", "ECE", "CIVIL", "MECH", "CSE (Embedded System and IoT)"],
+      "B.Tech": ["IT", "AIDS", "AIML"]
+    };
+
+    // Fill the Specialization dropdown based on the selected degree
+    function fillSpecializations() {
+      specSelect.innerHTML = '<option value="">-- Select Specialization --</option>';
+      var list = specializations[degreeSelect.value] || [];
+
+      for (var i = 0; i < list.length; i++) {
+        var option = document.createElement("option");
+        option.value = list[i];
+        option.textContent = list[i];
+        specSelect.appendChild(option);
+      }
+
+      specSelect.disabled = list.length === 0;
+    }
+
+    // Show or hide the Degree dropdown
+    function updateHigherBox() {
+      if (classSelect.value === "Higher Education") {
+        higherBox.style.display = "";
+        degreeSelect.required = true;
+        specSelect.required = true;
+      } else {
+        higherBox.style.display = "none";
+        degreeSelect.required = false;
+        specSelect.required = false;
+        degreeSelect.value = "";
+        fillSpecializations();
+      }
+    }
+
+    classSelect.addEventListener("change", updateHigherBox);
+    degreeSelect.addEventListener("change", fillSpecializations);
+    fillSpecializations();
+
+    // When the form is submitted
+    form.addEventListener("submit", function (event) {
+      event.preventDefault(); // stop the page from reloading
+
+      // Read the values typed by the user
+      var name = document.getElementById("student-name").value;
+      var className = classSelect.value;
+
+      // For Higher Education, also show the degree and specialization
+      if (className === "Higher Education") {
+        className = "Higher Education - " + degreeSelect.value + " - " + specSelect.value;
+      }
+
+      // Make a simple application number, e.g. GRA2026-4821
+      var number = "GRA2026-" + Math.floor(1000 + Math.random() * 9000);
+
+      // Put the values into the success message
+      document.getElementById("appNumber").textContent = number;
+      document.getElementById("showName").textContent = name;
+      document.getElementById("showClass").textContent = className;
+
+      // Hide the form and show the success message
+      form.style.display = "none";
+      successBox.classList.add("show");
+      window.scrollTo(0, 0);
+    });
+
+    // "Submit Another Application" button
+    document.getElementById("newApplication").addEventListener("click", function () {
+      form.reset();
+      updateHigherBox();
+      successBox.classList.remove("show");
+      form.style.display = "block";
+    });
+  </script>
+
+</body>
+</html>

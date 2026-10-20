@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leadership | Abinesh R</title>
+  <style>
+    /* ===== BASE ===== */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #0a1628;
+      color: #e2e8f0;
+      line-height: 1.7;
+    }
+    a { color: #fbbf24; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== LEADERSHIP SECTION ===== */
+    .leadership {
+      padding: 80px 20px;
+      scroll-margin-top: 100px;
+    }
+    .leadership-title { text-align: center; margin-bottom: 40px; }
+    .leadership-title h2 {
+      font-size: 2.6rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #fbbf24;
+      margin: 0 0 10px;
+    }
+    .breadcrumb { color: #cbd5e1; margin: 0; }
+
+    .wrap { max-width: 1100px; margin: 0 auto; }
+
+    /* Hero card */
+    .leader-card {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px 50px 0;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #fde68a 0%, #fbbf24 50%, #f97316 100%);
+      overflow: hidden;
+    }
+    .leader-text { padding-bottom: 50px; color: #0a1628; }
+    .leader-text h3 {
+      font-size: 2.2rem;
+      margin: 0 0 8px;
+      border-bottom: 3px solid #0a1628;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+    .leader-role { font-size: 1.3rem; font-weight: 700; margin: 12px 0 4px; }
+    .leader-org  { font-size: 1.05rem; margin: 0; }
+    .leader-photo { width: 320px; max-width: 100%; display: block; object-fit: cover; }
+
+    /* Content blocks */
+    .block {
+      margin-top: 30px;
+      padding: 28px 32px;
+      background: #0f1f3a;
+      border: 1px solid #1e3358;
+      border-radius: 14px;
+    }
+    .block h3 {
+      margin: 0 0 16px;
+      color: #fbbf24;
+      font-size: 1.5rem;
+      border-left: 5px solid #fbbf24;
+      padding-left: 12px;
+    }
+    .block p { margin: 0 0 10px; }
+    .block ul { margin: 0; padding-left: 22px; }
+    .block li { margin-bottom: 8px; }
+
+    /* Contact row */
+    .contact-list { list-style: none; padding: 0 !important; }
+    .contact-list li { margin-bottom: 6px; }
+
+    /* Skills grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .skill-box {
+      background: #13284a;
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .skill-box strong { color: #fbbf24; display: block; margin-bottom: 4px; }
+
+    /* Timeline items (internship, education, projects) */
+    .item {
+      padding: 14px 0;
+      border-bottom: 1px dashed #1e3358;
+    }
+    .item:last-child { border-bottom: none; }
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .item-head span { color: #fbbf24; font-weight: 600; }
+    .item-sub { color: #94a3b8; margin: 2px 0 8px; font-size: 0.95rem; }
+    .tag {
+      display: inline-block;
+      background: #fbbf24;
+      color: #0a1628;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-right: 6px;
+    }
+
+    /* Certifications as chips */
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 !important; list-style: none; }
+    .chips li {
+      background: #13284a;
+      border: 1px solid #fbbf24;
+      color: #fde68a;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin: 0;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      .leader-card {
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+        padding: 30px 20px 0;
+      }
+      .leader-text { padding-bottom: 20px; }
+      .leadership-title h2 { font-size: 1.8rem; }
+      .block { padding: 20px; }
+}
+
+  </style>
+</head>
+<body>
+
+<!-- ===== LEADERSHIP SECTION (copy from here) ===== -->
+<section id="leadership" class="leadership">
+
+  <div class="leadership-title">
+    <h2>Founder &amp; Correspondent</h2>
+    <p class="breadcrumb"><a href="./index.html">Home / Leadership</a></p>
+  </div>
+
+  <div class="wrap">
+
+    <!-- Hero card -->
+    <div class="leader-card">
+      <div class="leader-text">
+        <h3>Abinesh R</h3>
+        <p class="leader-role">Java Developer &amp; Founder</p>
+        <p class="leader-org">GRA Group of Institutions</p>
+        <p class="leader-org">B.E. Computer Science and Engineering</p>
+      </div>
+      <img src="./Abinesh photo.jpeg" alt="Abinesh R" class="leader-photo">
+    </div>
+
+    <!-- Professional summary -->
+    <div class="block">
+      <h3>Professional Summary</h3>
+      <p>
+        B.E. Computer Science and Engineering graduate with hands-on experience in Core Java,Object-Oriented Programming, SQL, MySQL, HTML, CSS, and JavaScript. Completed a Java Development Internship with practical exposure to application development, database operations, debugging, and web development.
+      </p>
+      <p>
+        Built Java-based applications and database projects involving voting, library management,and e-commerce data management. Seeking an entry-level Java Developer or Software Developer role.
+      </p>
+    </div>
+
+    <!-- Contact -->
+    <div class="block">
+      <h3>Contact</h3>
+      <ul class="contact-list">
+        <li>📍 Chennai, Tamil Nadu</li>
+        <li>📞 <a href="tel:+919344040239">+91 93440 40239</a></li>
+        <li>✉️ <a href="mailto:abineshr599@gmail.com">abineshr599@gmail.com</a></li>
+        <li>💼 <a href="https://linkedin.com/in/abinesh-rajendiran-5319ba309" target="_blank" rel="noopener">linkedin.com/in/abinesh-rajendiran-5319ba309</a></li>
+        <li>🐙 <a href="https://github.com/abineshrajendiran" target="_blank" rel="noopener">github.com/abineshrajendiran</a></li>
+        <li>🌐 <a href="https://abineshrajendiran.github.io/portfolio/" target="_blank" rel="noopener">abineshrajendiran.github.io/portfolio</a></li>
+      </ul>
+    </div>
+
+    <!-- Technical skills -->
+    <div class="block">
+      <h3>Technical Skills</h3>
+      <div class="skills-grid">
+        <div class="skill-box"><strong>Programming</strong>Core Java, JavaScript</div>
+        <div class="skill-box"><strong>Database</strong>SQL, MySQL</div>
+        <div class="skill-box"><strong>Web Technologies</strong>HTML5, CSS3</div>
+        <div class="skill-box"><strong>Tools</strong>Eclipse, Visual Studio Code, Notepad++, Oracle, GitHub</div>
+        <div class="skill-box"><strong>Concepts</strong>OOP, Encapsulation, Inheritance, Polymorphism, Abstraction, Exception Handling</div>
+      </div>
+    </div>
+
+    <!-- Internship -->
+    <div class="block">
+      <h3>Internship</h3>
+      <div class="item">
+        <div class="item-head">Java Development Intern <span>Jul 2024</span></div>
+        <p class="item-sub">Samcore Solution, Trichy</p>
+        <ul>
+          <li>Built basic Java applications using Core Java and Object-Oriented Programming concepts.</li>
+          <li>Wrote SQL queries for database operations, data retrieval, and data manipulation.</li>
+          <li>Created HTML, CSS, and basic JavaScript web pages and supported application debugging and testing.</li>
+          <li>Contributed to team assignments, technical documentation, and application development tasks.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="block">
+      <h3>Projects</h3>
+
+      <div class="item">
+        <div class="item-head">Online Voting System</div>
+        <p class="item-sub"><span class="tag">Core Java</span><span class="tag">OOP</span></p>
+        <ul>
+          <li>Created a Java voting application supporting voter registration, authentication, vote casting, and result generation.</li>
+          <li>Enforced duplicate-voting prevention to restrict multiple votes from the same voter.</li>
+          <li>Added admin approval and voter management features using Object-Oriented Programming principles.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-head">Library Management System</div>
+        <p class="item-sub"><span class="tag">Core Java</span><span class="tag">OOPs</span></p>
+        <ul>
+          <li>Built a library application with Admin and Student login and registration functionality.</li>
+          <li>Added book management for book ID, title, author, availability, issue, return, and fine calculation.</li>
+          <li>Applied Object-Oriented Programming principles to structure application functionality.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-head">Online Shopping Database</div>
+        <p class="item-sub"><span class="tag">SQL</span><span class="tag">MySQL</span></p>
+        <ul>
+          <li>Designed a relational database covering customers, products, orders, payments, and inventory.</li>
+          <li>Applied Primary Keys, Foreign Keys, Joins, WHERE, GROUP BY, ORDER BY, and aggregate functions for data management.</li>
+          <li>Developed an online shopping application with user authentication, product browsing, cart, checkout, and order management using Java, HTML, CSS, JavaScript, JDBC, and MySQL.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="block">
+      <h3>Education</h3>
+
+      <div class="item">
+        <div class="item-head">B.E. Computer Science and Engineering <span>2022–2026</span></div>
+        <p class="item-sub">AKT Memorial College of Engineering and Technology, Kallakurichi — CGPA: 8.30/10</p>
+      </div>
+
+      <div class="item">
+        <div class="item-head">Higher Secondary Certificate (HSC) <span>2021–2022</span></div>
+        <p class="item-sub">Jayapriya Vidyalaya Matric Higher Secondary School — 67%</p>
+      </div>
+
+      <div class="item">
+        <div class="item-head">Secondary School Leaving Certificate (SSLC) <span>2019–2020</span></div>
+        <p class="item-sub">Jayapriya Vidyalaya Matric Higher Secondary School — 87%</p>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="block">
+      <h3>Certifications</h3>
+      <ul class="chips">
+        <li>Java Developer</li>
+        <li>Google Data Analytics</li>
+        <li>Google Cloud Engineering</li>
+        <li>HTML5 – The Language</li>
+        <li>Artificial Intelligence Fundamentals</li>
+      </ul>
+    </div>
+
+    <!-- Achievements -->
+    <div class="block">
+      <h3>Achievements</h3>
+      <ul>
+        <li>Coordinated the Paper Presentation event as part of the college symposium.</li>
+        <li>Completed 3+ projects using Java, MySQL, HTML, and CSS involving application development and database management.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+<!-- ===== END LEADERSHIP SECTION ===== -->
+
+</body>
+</html>
