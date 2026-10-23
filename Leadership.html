@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leadership | GRA Group of Institutions</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    * {
+         box-sizing: border-box; 
+        }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: radial-gradient(circle at top, #112445 0%, #0a1628 60%);
+      color: #e2e8f0;
+      line-height: 1.75;
+    }
+    a { color: #fbbf24; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; }
+
+    /* ===== Page title ===== */
+    .page-title { text-align: center; padding: 70px 20px 30px; }
+    .page-title h1 {
+      margin: 0 0 10px;
+      font-size: 2.6rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #fbbf24;
+    }
+    .page-title .line {
+      width: 90px; height: 4px; margin: 0 auto 14px;
+      background: linear-gradient(90deg, #fbbf24, #f97316);
+      border-radius: 4px;
+    }
+    .page-title p { margin: 0; color: #cbd5e1; }
+
+    /* ===== One profile = one full section ===== */
+    .profile {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 45px;
+      align-items: center;
+      margin: 50px 0;
+      padding: 40px;
+      background: linear-gradient(160deg, #13284a 0%, #0f1f3a 100%);
+      border: 1px solid #1e3358;
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+    .profile.reverse { grid-template-columns: 1fr 340px; }
+    .profile.reverse .photo-side { order: 2; }
+
+    /* Photo frame 300 x 400 (initials show if the image is missing) */
+    .photo-side { text-align: center; }
+    .photo {
+      position: relative;
+      width: 300px; height: 400px;
+      max-width: 100%;
+      margin: 0 auto;
+      border-radius: 18px;
+      border: 5px solid #fbbf24;
+      box-shadow: 14px 14px 0 rgba(251, 191, 36, 0.2);
+      background: linear-gradient(135deg, #fde68a, #f97316);
+      overflow: hidden;
+    }
+    .photo span {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; font-weight: 800; color: #0a1628;
+    }
+    .photo::after {
+      content: "";
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center top;
+    }
+    .p-govind::after  { background-image: url("./Govindasamy.png"); }
+    .p-rajen::after   { background-image: url("./Rajendiran.png         "); }
+    .p-abinesh::after { background-image: url("./Abinesh photo.jpeg"); }
+
+    .photo-name {
+      margin-top: 22px;
+      font-size: 1.1rem;
+      color: #fde68a;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Text side */
+    .badge {
+      display: inline-block;
+      background: #fbbf24; color: #0a1628;
+      font-weight: 800; font-size: 0.85rem;
+      padding: 5px 18px; border-radius: 20px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .info h2 { margin: 0 0 4px; font-size: 2.3rem; color: #ffffff; }
+    .designation { margin: 0 0 18px; color: #fbbf24; font-weight: 700; font-size: 1.1rem; }
+    .info p { margin: 0 0 14px; color: #dbe4f0; }
+
+    .info h3 {
+      margin: 22px 0 10px;
+      color: #fbbf24;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-left: 5px solid #fbbf24;
+      padding-left: 12px;
+    }
+    .tick-list { list-style: none; padding: 0; margin: 0; }
+    .tick-list li { position: relative; padding: 6px 0 6px 28px; }
+    .tick-list li::before {
+      content: "\2714";
+      position: absolute; left: 0; top: 6px;
+      color: #fbbf24; font-weight: 700;
+    }
+
+    .quote {
+      margin: 22px 0 0;
+      padding: 16px 20px;
+      background: rgba(251, 191, 36, 0.1);
+      border-left: 5px solid #fbbf24;
+      border-radius: 8px;
+      font-style: italic;
+      color: #fde68a !important;
+    }
+
+    /* Small fact boxes */
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+    .fact { background: #0a1628; border: 1px solid #1e3358; border-radius: 12px; padding: 12px; text-align: center; }
+    .fact b { display: block; color: #fbbf24; font-size: 1.05rem; }
+    .fact small { color: #94a3b8; }
+
+    /* ===== Social media buttons ===== */
+    .info h3.social-title { margin-top: 26px; }
+    .social { display: flex; flex-wrap: wrap; gap: 12px; }
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #ffffff;
+      border: 2px solid transparent;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .social a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
+    }
+    .s-linkedin  { background: #0a66c2; }
+    .s-github    { background: #24292f; border-color: #475569 !important; }
+    .s-whatsapp  { background: #1faa59; }
+    .s-portfolio { background: #fbbf24; color: #0a1628 !important; }
+    .s-mail      { background: #c0392b; }
+    .s-phone     { background: #13284a; border-color: #fbbf24 !important; color: #fde68a !important; }
+    .s-dev{
+        background-color: #f97316;
+    }
+    .s-skills{
+        background-color:#fde68a ;
+    }
+    .s-instagram{
+        background-color: aqua;
+    }
+    .s-facebook{
+        background-color: chartreuse;
+    }
+
+    /* ===== Mobile ===== */
+    @media (max-width: 860px) {
+      .profile, .profile.reverse { grid-template-columns: 1fr; padding: 26px 20px; gap: 28px; }
+      .profile.reverse .photo-side { order: 0; }
+      .facts { grid-template-columns: 1fr; }
+      .page-title h1 { font-size: 1.9rem; }
+      .info h2 { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-title">
+    <h1>Our Leadership</h1>
+    <div class="line"></div>
+    <p><a href="./index.html">Home</a> / Leadership</p>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ================= FOUNDER 1 ================= -->
+    <section class="profile" id="govindasamy">
+      <div class="photo-side">
+        <div class="photo p-govind"><span>GA</span></div>
+        <div class="photo-name">Govindasamy.A</div>
+      </div>
+
+      <div class="info">
+        <span class="badge">FOUNDER</span>
+        <h2>Govindasamy.A</h2>
+        <p class="designation">Founder, GRA Group of Institutions</p>
+
+        <p>
+          Govindasamy Arumugam is one of the founders of GRA Group of Institutions. He started the institution with a simple belief: every child deserves good education close to home, with strong values and discipline.
+        </p>
+        <p>
+          His vision shaped the culture of the institution, where students are guided to become confident, responsible and successful citizens.
+        </p>
+
+        <h3>Role &amp; Responsibilities</h3>
+        <ul class="tick-list">
+          <li>Set the vision, mission and core values of the institution.</li>
+          <li>Guide the long-term growth and direction of the group.</li>
+          <li>Support quality education and a strong academic culture.</li>
+          <li>Build trust with parents, students and the community.</li>
+        </ul>
+
+        <div class="facts">
+          <div class="fact"><b>Founder</b><small>Position</small></div>
+          <div class="fact"><b>Vision</b><small>Focus Area</small></div>
+          <div class="fact"><b>Values</b><small>Guiding Principle</small></div>
+        </div>
+
+        <p class="quote">"Education is the strongest foundation for a better future."</p>
+      </div>
+    </section>
+
+    <!-- ================= FOUNDER 2 ================= -->
+    <section class="profile reverse" id="rajendiran">
+      <div class="photo-side">
+        <div class="photo p-rajen"><span>RG</span></div>
+        <div class="photo-name">Rajendiran.G (ITI)</div>
+      </div>
+
+      <div class="info">
+        <span class="badge">FOUNDER</span>
+        <h2>Rajendiran.G  </h2>
+        <p class="designation">Founder, GRA Group of Institutions</p>
+
+        <p>
+          Rajendiran Grajendiran is a founder of GRA Group of Institutions. He worked with dedication from the first day to build the institution step by step, with a focus on facilities, resources and a safe learning environment.
+        </p>
+        <p>
+          He believes that a good campus, caring staff and clear discipline help students learn better and grow stronger.
+        </p>
+
+        <h3>Role &amp; Responsibilities</h3>
+        <ul class="tick-list">
+          <li>Help establish and develop the institution from the beginning.</li>
+          <li>Oversee campus infrastructure, facilities and resources.</li>
+          <li>Support staff welfare and an ethical, disciplined environment.</li>
+          <li>Guide the management on policies and future planning.</li>
+        </ul>
+
+        <div class="facts">
+          <div class="fact"><b>Founder</b><small>Position</small></div>
+          <div class="fact"><b>Campus</b><small>Focus Area</small></div>
+          <div class="fact"><b>Discipline</b><small>Guiding Principle</small></div>
+        </div>
+
+        <p class="quote">"A good campus and caring teachers build good students."</p>
+      </div>
+    </section>
+
+    <!-- ================= OWNER ================= -->
+    <section class="profile" id="abinesh">
+      <div class="photo-side">
+        <div class="photo p-abinesh"><span>AR</span></div>
+        <div class="photo-name">Abinesh.R BE(CSE)</div>
+      </div>
+
+      <div class="info">
+        <span class="badge">OWNER </span>
+        <h2>Abinesh.R BE(CSE)</h2>
+        <p class="designation">Owner, GRA Group of Institutions</p>
+
+        <p>
+          Abinesh Rajendiran   is the owner and correspondent of GRA Group of Institutions. He leads the institution with a modern outlook and wants every student to get quality education with the help of technology.
+        </p>
+        <p>
+          Under his guidance, admissions, student information and communication with parents are managed through a simple online system.
+        </p>
+
+        <h3>Role &amp; Responsibilities</h3>
+        <ul class="tick-list">
+          <li>Overall administration and day-to-day management.</li>
+          <li>Review and approve student admissions.</li>
+          <li>Manage the school website and online admission portal.</li>
+          <li>Stay connected with parents, students and staff.</li>
+        </ul>
+
+        <div class="facts">
+          <div class="fact"><b>Owner</b><small>Position</small></div>
+          <div class="fact"><b>Digital</b><small>Focus Area</small></div>
+          <div class="fact"><b>Innovation</b><small>Guiding Principle</small></div>
+        </div>
+
+        <p class="quote">"Simple, modern and open education for every student."</p>
+
+        <h3 class="social-title">Connect with me</h3>
+        <div class="social">
+          <a class="s-linkedin" href="https://linkedin.com/in/abinesh-rajendiran-5319ba309" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a class="s-github" href="https://github.com/abineshrajendiran" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a class="s-whatsapp" href="https://wa.me/919344040239" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+          <a class="s-portfolio" href="https://abineshrajendiran.github.io/portfolio/" target="_blank" rel="noopener">🌐 Portfolio</a>
+          <a class="s-dev" href="https://dev.to/@abineshrajendiran" target="_blank" rel="noopener"><i class="fa-brands fa-dev"></i> Dev.to</a>
+            <a class="s-skills" href="https://www.cloudskillsboost.google/public_profiles/30ce60d7-45d4-46cf-93a1-9c803889d761" target="_blank" rel="noopener"><i class="fa-solid fa-cloud"></i> Skills Boost</a>
+        <a class="s-instagram" href="https://www.instagram.com/its_me_lovely_abinesh_.r/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+         <a class="s-facebook" href="https://www.facebook.com/share/1LWA3Yn2og/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a>
+          <a class="s-mail" href="mailto:abineshr599@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a class="s-phone" href="tel:+919344040239"><i class="fa-solid fa-phone"></i> +91 93440 40239</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

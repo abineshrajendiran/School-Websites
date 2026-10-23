@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - GRA Group of Institutions</title>
+  <style>
+    /* login.css - styling for login.html (pure CSS, no JavaScript) */
+
+* {
+  box-sizing: border-box;
+}
+
+body.auth-page {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  background: linear-gradient(135deg, #3a0606 0%, #6A0F0F 55%, #8b1a1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+/* Two columns: brand on the left, card on the right */
+.auth-wrap {
+  width: 100%;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ===== Left side ===== */
+.auth-brand .brand-link {
+  display: inline-block;
+  color: #F1D18A;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.auth-brand .brand-link:hover {
+  text-decoration: underline;
+}
+
+.auth-brand h1 {
+  margin: 0 0 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 52px;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.auth-brand p {
+  margin: 0 0 26px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #f3dede;
+  max-width: 460px;
+}
+
+.ghost-btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border: 2px solid #F1D18A;
+  border-radius: 8px;
+  color: #F1D18A;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ghost-btn:hover {
+  background: #F1D18A;
+  color: #6A0F0F;
+}
+
+/* ===== Login card ===== */
+.auth-card {
+  background: #ffffff;
+  color: #222222;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tab {
+  flex: 1 1 50%;
+  padding: 16px 10px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: #f0e8e8;
+  color: #6A0F0F;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tab:hover {
+  background: #e8dcdc;
+}
+
+.tab.active {
+  background: #ffffff;
+  border-bottom-color: #6A0F0F;
+}
+
+/* HOME button on its own row under the tabs */
+.tabs > a {
+  flex: 0 0 100%;
+  text-decoration: none;
+}
+
+.tabs .home {
+  width: 100%;
+  padding: 12px 28px;
+  border: none;
+  background: #ffffff;
+  color: #222222;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tabs .home:hover {
+  color: #6A0F0F;
+  text-decoration: underline;
+}
+
+/* Forms */
+.auth-form {
+  padding: 22px 28px 30px;
+}
+
+.auth-form .field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.auth-form label {
+  font-size: 15px;
+  font-weight: bold;
+  color: #222222;
+  margin-bottom: 7px;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+  width: 100%;
+  padding: 13px 14px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  color: #222222;
+  background: #ffffff;
+  border: 1px solid #bbbbbb;
+  border-radius: 8px;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #6A0F0F;
+  box-shadow: 0 0 0 3px rgba(241, 209, 138, 0.7);
+}
+
+.auth-form input::placeholder {
+  color: #999999;
+}
+
+/* Password hint */
+.hint-box {
+  margin: 0 0 14px;
+  padding: 11px 14px;
+  background: #faf3e3;
+  border-left: 4px solid #F1D18A;
+  border-radius: 4px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #333333;
+}
+
+/* Error message (empty until a login fails) */
+.error-text {
+  margin: 0 0 14px;
+  min-height: 18px;
+  font-size: 14px;
+  color: #cc0000;
+}
+
+/* Login button */
+.submit-btn {
+  padding: 14px 30px;
+  border: none;
+  border-radius: 8px;
+  background: #6A0F0F;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover {
+  background: #4A0808;
+}
+
+.submit-btn.full {
+  width: 100%;
+}
+
+/* ===== Tablet and mobile ===== */
+@media (max-width: 900px) {
+  .auth-wrap {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 480px;
+  }
+
+  .auth-brand h1 {
+    font-size: 38px;
+  }
+
+  .auth-brand p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body.auth-page {
+    padding: 20px 12px;
+  }
+
+  .auth-form {
+    padding: 18px 18px 24px;
+  }
+
+  .tabs .home {
+    padding: 12px 18px;
+  }
+}
+  </style>
+</head>
+<body class="auth-page">
+
+  <div class="auth-wrap">
+
+    <div class="auth-brand">
+      <a class="brand-link" href="./Index1.html">GRA Group of Institutions</a>
+      <h1>Welcome back</h1>
+      <p>Students can check their admission status. The admission office can review every application.</p>
+      <a class="ghost-btn" href="./apply.html">New admission? Apply now</a>
+    </div>
+
+    <div class="auth-card">
+      <div class="tabs">
+        <button type="button" class="tab active" id="tabStudent">Student Login</button>
+        <button type="button" class="tab" id="tabAdmin">Admin Login</button>
+        <a href="./index.html"><button type="button" class="home" id="tabHome">HOME</button></a>
+      </div>
+
+      <!-- Student -->
+      <form id="studentForm" class="auth-form">
+        <div class="field">
+          <label for="appNo">Admission Number</label>
+          <input type="text" id="appNo" placeholder="e.g. GRA2026-0001" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label for="studentPass">Password</label>
+          <input type="password" id="studentPass" autocomplete="off" required>
+        </div>
+        <p class="hint-box">Password is your name (small letters, no spaces) followed by your date of birth as DDMMYYYY.<br>Example: <b>ravikumar05032008</b></p>
+        <p class="error-text" id="studentError"></p>
+        <button type="submit" class="submit-btn full">Login as Student</button>
+      </form>
+
+      <!-- Admin -->
+      <form id="adminForm" class="auth-form" style="display:none;">
+        <div class="field">
+          <label for="adminUser">Username</label>
+          <input type="text" id="adminUser" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="adminPass">Password</label>
+          <input type="password" id="adminPass" autocomplete="current-password" required>
+        </div>
+        <p class="error-text" id="adminError"></p>
+        <button type="submit" class="submit-btn full">Login as Admin</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script src="./Auth.js"></script>
+  <script>
+    // NOTE: a login checked inside the page is only a basic lock. Real security needs a server.
+    var ADMIN_USER = "Abinesh R";
+    var ADMIN_PASS = "Abinesh@2005";
+    var STORAGE_KEY = "gra_applications";
+
+    // Already logged in? Go to the right page.
+    if (sessionStorage.getItem("gra_admin") === "yes") location.href = "admin.html";
+    if (sessionStorage.getItem("gra_student")) location.href = "student.html";
+
+    var tabStudent = document.getElementById("tabStudent");
+    var tabAdmin = document.getElementById("tabAdmin");
+    var studentForm = document.getElementById("studentForm");
+    var adminForm = document.getElementById("adminForm");
+
+    function showTab(admin) {
+      tabAdmin.classList.toggle("active", admin);
+      tabStudent.classList.toggle("active", !admin);
+      adminForm.style.display = admin ? "" : "none";
+      studentForm.style.display = admin ? "none" : "";
+    }
+    tabStudent.addEventListener("click", function () { showTab(false); });
+    tabAdmin.addEventListener("click", function () { showTab(true); });
+
+    // Admin login
+    adminForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var user = document.getElementById("adminUser").value.trim().toLowerCase();
+      var pass = document.getElementById("adminPass").value;
+      if (user === ADMIN_USER.toLowerCase() && pass === ADMIN_PASS) {
+        sessionStorage.setItem("gra_admin", "yes");
+        location.href = "admin.html";
+      } else {
+        document.getElementById("adminError").textContent = "Wrong username or password.";
+      }
+    });
+
+    // Student login
+    studentForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var no = document.getElementById("appNo").value.trim().toUpperCase();
+      var pass = cleanPassword(document.getElementById("studentPass").value);
+      var error = document.getElementById("studentError");
+
+      var list = [];
+      try { list = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch (x) {}
+
+      for (var i = 0; i < list.length; i++) {
+        var a = list[i];
+        if (a.applicationNo === no && cleanPassword(makePassword(a["Student Name"], a["Date of Birth"])) === pass) {
+          sessionStorage.setItem("gra_student", a.applicationNo);
+          location.href = "student.html";
+          return;
+        }
+      }
+      error.textContent = "Admission number or password is not correct.";
+    });
+  </script>
+</body>
+</html>

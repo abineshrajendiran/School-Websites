@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Home - GRA Group of Institutions</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, sans-serif; background: #f3f3f6; color: #222; }
+  .bar { background: #6A0F0F; color: #F1D18A; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .bar h1 { margin: 0; font-size: 20px; }
+  .bar button { background: #F1D18A; color: #6A0F0F; border: 0; padding: 8px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+  .wrap { max-width: 900px; margin: 25px auto; padding: 0 15px; }
+  .card { background: #fff; border-radius: 12px; padding: 22px; margin-bottom: 20px; box-shadow: 0 3px 14px rgba(0,0,0,.1); }
+  .card h2 { margin-top: 0; color: #6A0F0F; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 9px 10px; border-bottom: 1px solid #e5e5e5; }
+  td:first-child { font-weight: bold; color: #6A0F0F; width: 38%; }
+  .badge { padding: 4px 12px; border-radius: 12px; font-weight: bold; }
+  .Approved { background: #d9f3e0; color: #1e8e3e; }
+  .Pending { background: #fff0cc; color: #b36b00; }
+  .Rejected { background: #fbdcdc; color: #cc0000; }
+  .msg { text-align: center; padding: 40px 20px; }
+  ul { line-height: 1.8; }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <h1>GRA Group of Institutions</h1>
+    <button type="button" id="logoutBtn">Logout</button>
+  </div>
+  <div class="wrap" id="content"></div>
+
+  <script src="./Auth.js"></script>
+  <script>
+    var no = sessionStorage.getItem("gra_student");
+    if (!no) location.href = "login.html";
+
+    var list = [];
+    try { list = JSON.parse(localStorage.getItem("gra_applications") || "[]"); } catch (e) {}
+    var me = list.filter(function (a) { return a.applicationNo === no; })[0];
+    if (!me) { sessionStorage.removeItem("gra_student"); location.href = "login.html"; }
+
+    function esc(t) {
+      return String(t == null ? "" : t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    var cls = me["Class Applying For"];
+    if (cls === "Higher Education") cls += " - " + me["Degree"] + " - " + me["Specialization"];
+
+    var html = "";
+    if (me.status === "Approved") {
+      html =
+        '<div class="card"><h2>Welcome, ' + esc(me["Student Name"]) + '!</h2>' +
+        '<p>Congratulations! Your admission is <span class="badge Approved">Approved</span></p>' +
+        '<table>' +
+        '<tr><td>Admission No.</td><td>' + esc(me.applicationNo) + '</td></tr>' +
+        '<tr><td>Class</td><td>' + esc(cls) + '</td></tr>' +
+        '<tr><td>Date of Birth</td><td>' + esc(me["Date of Birth"]) + '</td></tr>' +
+        '<tr><td>Father</td><td>' + esc(me["Father Name"]) + '</td></tr>' +
+        '<tr><td>Mobile</td><td>' + esc(me["Mobile Number"]) + '</td></tr>' +
+        '</table></div>' +
+
+        '<div class="card"><h2>About ' + esc(SCHOOL.name) + '</h2>' +
+        '<p>' + esc(SCHOOL.tagline) + '</p>' +
+        '<table>' +
+        '<tr><td>Address</td><td>' + esc(SCHOOL.address) + '</td></tr>' +
+        '<tr><td>Phone</td><td>' + esc(SCHOOL.phone) + '</td></tr>' +
+        '<tr><td>Email</td><td>' + esc(SCHOOL.email) + '</td></tr>' +
+        '<tr><td>Principal</td><td>' + esc(SCHOOL.principal) + '</td></tr>' +
+        '<tr><td>Correspondent</td><td>' + esc(SCHOOL.correspondent) + '</td></tr>' +
+        '</table></div>' +
+
+        '<div class="card"><h2>Courses</h2><ul>' +
+        SCHOOL.courses.map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") +
+        '</ul></div>' +
+
+        '<div class="card"><h2>Facilities</h2><ul>' +
+        SCHOOL.facilities.map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") +
+        '</ul></div>';
+    } else if (me.status === "Rejected") {
+      html = '<div class="card msg"><h2>Application Rejected</h2><span class="badge Rejected">Rejected</span>' +
+             '<p>Sorry, your application was not approved. Please contact the admission office: ' +
+             esc(SCHOOL.phone) + ' / ' + esc(SCHOOL.email) + '</p></div>';
+    } else {
+      html = '<div class="card msg"><h2>Waiting for Approval</h2><span class="badge Pending">Pending</span>' +
+             '<p>Your application <b>' + esc(me.applicationNo) + '</b> is waiting for the admin to approve it. Please login again later.</p></div>';
+    }
+    document.getElementById("content").innerHTML = html;
+
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+      sessionStorage.removeItem("gra_student");
+      location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
